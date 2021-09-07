@@ -31,7 +31,7 @@ module Pingable
   attr_accessor :overview, :last_server_time;
 #1f945 129349
   def tell_domain(t1)
-    if 8 <= t1.hour && t1.hour <= 13
+    if 8 <= t1.hour && t1.hour < 13
       if 1 <= t1.wday && t1.wday <= 5
         return "COLLEGE_CC"
       end
@@ -319,3 +319,4 @@ module Pingable
   #private :send_to_server, :switch_base_url
 
 end
+

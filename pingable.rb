@@ -16,10 +16,12 @@ module Pingable
 #217.239.142.217 deutsche Telekom, dortmund, ffm, osnabrᴞck
 # guess what ip portal(dot)cc student(dot)com has
   EXTERN_URL_2 = Base64.decode64(ENCODED2);#lo_mismo
-#this is sha256.downcase value of jar file, that /updater/getClient spits out,no auth
+
+  #.sha256sum wget /updater/getClient
   #CHECKSUM ='5fdee34b788349d81f0e301cad52374ea5dae98f113708b8e4d9656dcd475b69';
   #/\ till 080621  \/current
-  CHECKSUM = 'a98a7b09c3ce74af0d40f1886092c4e1aa6b50a22c30c09a89cf1963b6f12b77';
+  CHECKSUM = '26dfcd77d66c956813526233808b6f46705c858567a9800a50cd5f5f75845a3b';
+  #'a98a7b09c3ce74af0d40f1886092c4e1aa6b50a22c30c09a89cf1963b6f12b77';
   #Base64.encode64(username:password), assert size = 24
   #4/3 n, our n is 18 = 7:10 7+1+10 =18
   #@basic_auth = Base64.encode64(@user_creds);
@@ -33,7 +35,7 @@ module Pingable
   def tell_domain(t1)
     if 8 <= t1.hour && t1.hour < 13
       if 1 <= t1.wday && t1.wday <= 5
-        return "COLLEGE_CC"
+        return "no_COLLEGE_CC"
       end
     end
     return "NO_COLLEGE_CC"
@@ -242,7 +244,7 @@ module Pingable
     if login_response
       if (@ping_token && login_response.code == '200')
         success = true;
-        cause_relog_thread();
+        #cause_relog_thread();
         print "\u{0a 1f510 20}server replied HTTP-OK to login request\u{0a}";#🔐
         print "\u{1f6c2 20} #{@ping_token} is your 'requestId' for this session\u{0a}";#🛂
       else
@@ -319,4 +321,3 @@ module Pingable
   #private :send_to_server, :switch_base_url
 
 end
-
